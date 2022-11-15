@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Random roll call</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 100px;
+            color: red;
+        }
+        .box {
+            width: 900px;
+            height: 383px;
+            min-width: 900px;
+            background-image: url(./bg.png);
+
+            margin: 50px auto;
+            font-size: 80px;
+            text-align: center;
+            line-height: 350px;
+            border: 1px solid rgb(255, 115, 0);
+            border-radius: 20px;
+            font-weight: 700;
+            font-family: 楷体;
+        }
+        .btns {
+            text-align: center;
+        }
+        .btns button {
+            width: 150px;
+            height: 50px;
+            margin: 0 50px;
+            font-size: 20px;
+            color: rgb(255, 255, 255);
+            background-color: rgb(49, 148, 99);
+            border: 1px solid rgb(255, 255, 255);
+            border-radius: 15px;
+            cursor: pointer;
+            box-shadow: 0 10px #999;
+            font-weight: 700;
+        }
+        .btns button:active {
+            box-shadow: 0 7px rgb(117, 117, 117);
+            transform: translateY(3px);
+        }
+    </style>
+</head>
+<body>
+        <h1>Random roll call is not repeated</h1>
+        <div class="box">
+            <div class="qs">Name</div>
+        </div>
+        <div class="btns">
+            <button class="start">Start</button>
+            <button class="end">Stop</button>
+        </div>
+    <script>
+        let arr = ['张晏荣','张耀尉','张瑜晏','张诰升','张娟','张濡丞','张曜羽','张曜丞','张润汐','张芸果','张峻熙','张小勇','张飞','张雨荨','张诗含','张诗若','张辰海','张晓雨','张展鸣','张默','张俊杰','张建烁','张缠颐','张艺耀']
+        function getRandom(min,max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min
+        }
+        let start = document.querySelector('.start')
+        let end = document.querySelector('.end')
+        let qs = document.querySelector('.qs')
+        let timer = 0 
+        let random = 0 
+        start.addEventListener('click', function() {
+            timer = setInterval(function(){
+                random = getRandom(0, arr.length -1 )
+                qs.innerHTML = arr[random]
+            },25)
+            if (arr.length === 1) {
+                start.disabled = end.disabled = true
+            }
+        })
+        end.addEventListener('click',function(){
+            clearInterval(timer)
+            arr.splice(random,1)
+        })
+    </script>
+</body>
+</html>
