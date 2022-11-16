@@ -1,3 +1,2 @@
-# Random-roll-call
-随机点名
-HTML+CSS+JavaScript
+# 随机点名小工具
+将 let arr = 数组里的姓名替换成你需要的姓名即可使用
